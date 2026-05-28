@@ -126,7 +126,7 @@ IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'fk_propuesta_vuelo')
 IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'fk_excursion_proveedor')
     ALTER TABLE LA_MILA_COMPLETA.excursion DROP CONSTRAINT fk_excursion_proveedor;
 
-IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'fk_tramo_aero:origen')
+IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'fk_tramo_aero_origen')
     ALTER TABLE LA_MILA_COMPLETA.tramo DROP CONSTRAINT fk_tramo_aero_origen;
 
 IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'fk_tramo_aero_destino')
@@ -160,11 +160,107 @@ IF EXISTS (SELECT 1 FROM sys.foreign_keys WHERE name = 'fk_aspecto_puntaje_punta
     ALTER TABLE LA_MILA_COMPLETA.aspecto_puntaje DROP CONSTRAINT fk_aspecto_puntaje_puntaje;
   
 --Borrar PKs
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_pais')
+    ALTER TABLE LA_MILA_COMPLETA.propuesta DROP CONSTRAINT PK_pais;
 
-IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_Pais')
-    ALTER TABLE LA_MILA_COMPLETA.propuesta DROP CONSTRAINT PK_Pais;
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_ciud')
+    ALTER TABLE LA_MILA_COMPLETA.ciudad DROP CONSTRAINT PK_ciud;
 
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_pcia')
+    ALTER TABLE LA_MILA_COMPLETA.provincia DROP CONSTRAINT PK_pcia;
 
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_loca')
+    ALTER TABLE LA_MILA_COMPLETA.localidad DROP CONSTRAINT PK_loca;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_clie')
+    ALTER TABLE LA_MILA_COMPLETA.cliente DROP CONSTRAINT PK_clie;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_agcy')
+    ALTER TABLE LA_MILA_COMPLETA.agencia DROP CONSTRAINT PK_agcy;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_agen')
+    ALTER TABLE LA_MILA_COMPLETA.agente DROP CONSTRAINT PK_agen;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_soli')
+    ALTER TABLE LA_MILA_COMPLETA.solicitud DROP CONSTRAINT PK_soli;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_deta')
+    ALTER TABLE LA_MILA_COMPLETA.detalle_solicitud DROP CONSTRAINT PK_deta;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_arol')
+    ALTER TABLE LA_MILA_COMPLETA.aerolinea DROP CONSTRAINT PK_arol;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_aero')
+    ALTER TABLE LA_MILA_COMPLETA.aeropuerto DROP CONSTRAINT PK_aero;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_encu')
+    ALTER TABLE LA_MILA_COMPLETA.encuesta DROP CONSTRAINT PK_encu;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_punt')
+    ALTER TABLE LA_MILA_COMPLETA.puntaje DROP CONSTRAINT PK_punt;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_aspe')
+    ALTER TABLE LA_MILA_COMPLETA.aspecto DROP CONSTRAINT PK_aspe;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_espr')
+    ALTER TABLE LA_MILA_COMPLETA.estado_propuesta DROP CONSTRAINT PK_espr;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_prop')
+    ALTER TABLE LA_MILA_COMPLETA.propuesta DROP CONSTRAINT PK_prop;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_vent')
+    ALTER TABLE LA_MILA_COMPLETA.venta DROP CONSTRAINT PK_vent;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_hosp')
+    ALTER TABLE LA_MILA_COMPLETA.hospedaje DROP CONSTRAINT PK_hosp;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_habi')
+    ALTER TABLE LA_MILA_COMPLETA.habitacion DROP CONSTRAINT PK_habi;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_prho')
+    ALTER TABLE LA_MILA_COMPLETA.propuesta_hospedaje DROP CONSTRAINT PK_prho;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_vuel')
+    ALTER TABLE LA_MILA_COMPLETA.vuelo DROP CONSTRAINT PK_vuel;
+    
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_itvu')
+    ALTER TABLE LA_MILA_COMPLETA.item_vuelo DROP CONSTRAINT PK_itvu;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_pasa')
+    ALTER TABLE LA_MILA_COMPLETA.pasaje DROP CONSTRAINT PK_pasa;  
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_prvu')
+    ALTER TABLE LA_MILA_COMPLETA.propuesta_vuelo DROP CONSTRAINT PK_prvu;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_prov')
+    ALTER TABLE LA_MILA_COMPLETA.proveedor DROP CONSTRAINT PK_prov;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_excu')
+    ALTER TABLE LA_MILA_COMPLETA.excursion DROP CONSTRAINT PK_excu;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_itex')
+    ALTER TABLE LA_MILA_COMPLETA.item_excursion DROP CONSTRAINT PK_itex;  
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_itho')
+    ALTER TABLE LA_MILA_COMPLETA.item_hospedaje DROP CONSTRAINT PK_itho;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_tram')
+    ALTER TABLE LA_MILA_COMPLETA.tramo DROP CONSTRAINT PK_tram;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_itee')
+    ALTER TABLE LA_MILA_COMPLETA.item_excursion_excursion DROP CONSTRAINT PK_itee;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_patr')
+    ALTER TABLE LA_MILA_COMPLETA.pasaje_tramo DROP CONSTRAINT PK_patr;
+    
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_vutr')
+    ALTER TABLE LA_MILA_COMPLETA.vuelo_tramo DROP CONSTRAINT PK_vutr;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_prhh')
+    ALTER TABLE LA_MILA_COMPLETA.propuesta_hospedaje_habitacion DROP CONSTRAINT PK_prhh;
+
+IF EXISTS (SELECT 1 FROM sys.key_constraints WHERE name = 'PK_asde')
+    ALTER TABLE LA_MILA_COMPLETA.aspecto_puntaje DROP CONSTRAINT PK_asde;
 
 -- Borrar tablas
 IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'pais' AND schema_id = SCHEMA_ID('LA_MILA_COMPLETA'))
@@ -270,7 +366,7 @@ IF EXISTS (SELECT 1 FROM sys.tables WHERE name = 'aspecto_puntaje' AND schema_id
     DROP TABLE LA_MILA_COMPLETA.aspecto_puntaje;
 
 --Borrar Stored Procedures
-
+IF OBJECT_ID('LA_MILA_COMPLETA.MIGRAR_PAIS', 'P') IS NOT NULL DROP PROCEDURE LA_MILA_COMPLETA.MIGRAR_PAIS;
 
 --Borrar Schema
 IF EXISTS (SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'LA_MILA_COMPLETA')
@@ -293,7 +389,7 @@ CREATE TABLE LA_MILA_COMPLETA.ciudad (
     ciud_pais_id BIGINT,
     ciud_nombre NVARCHAR(255),
 
-    CONSTRAINT ciud_id PRIMARY KEY (ciud_id),
+    CONSTRAINT PK_ciud PRIMARY KEY (ciud_id),
     
     CONSTRAINT fk_ciudad_pais
         FOREIGN KEY (ciud_pais_id)
@@ -304,7 +400,7 @@ CREATE TABLE LA_MILA_COMPLETA.provincia (
     pcia_id BIGINT IDENTITY(1,1),
     pcia_nombre NVARCHAR(255),
     
-    CONSTRAINT PK_provincia PRIMARY KEY (pcia_id)
+    CONSTRAINT PK_pcia PRIMARY KEY (pcia_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.localidad (
@@ -312,7 +408,7 @@ CREATE TABLE LA_MILA_COMPLETA.localidad (
     loca_provincia_id BIGINT,
     loca_nombre NVARCHAR(255),
 
-    CONSTRAINT PK_localidad PRIMARY KEY (loca_id),
+    CONSTRAINT PK_loca PRIMARY KEY (loca_id),
 
     CONSTRAINT fk_localidad_provincia
         FOREIGN KEY (loca_provincia_id)
@@ -330,7 +426,7 @@ CREATE TABLE LA_MILA_COMPLETA.cliente (
     clie_direccion NVARCHAR(255),
     clie_fecha_nacimiento DATE,
     
-    CONSTRAINT PK_cliente PRIMARY KEY (clie_id),
+    CONSTRAINT PK_clie PRIMARY KEY (clie_id),
 
     CONSTRAINT fk_cliente_localidad
         FOREIGN KEY (clie_localidad_id)
@@ -344,7 +440,7 @@ CREATE TABLE LA_MILA_COMPLETA.agencia (
     agcy_telefono NVARCHAR(255),
     agcy_mail NVARCHAR(255),
     
-    CONSTRAINT PK_agencia PRIMARY KEY (agcy_nro),
+    CONSTRAINT PK_agcy PRIMARY KEY (agcy_nro),
 
     CONSTRAINT fk_agencia_localidad
         FOREIGN KEY (agcy_localidad_id)
@@ -363,7 +459,7 @@ CREATE TABLE LA_MILA_COMPLETA.agente (
     agen_direccion NVARCHAR(255),
     agen_fecha_nacimiento DATE,
 
-    CONSTRAINT agen_legajo PRIMARY KEY (agen_legajo),
+    CONSTRAINT PK_agen PRIMARY KEY (agen_legajo),
 
     CONSTRAINT fk_agente_localidad
         FOREIGN KEY (agen_localidad_id)
@@ -385,7 +481,7 @@ CREATE TABLE LA_MILA_COMPLETA.solicitud (
     soli_observaciones NVARCHAR(MAX),
     soli_presupuesto_estimado DECIMAL(18,2),
 
-    CONSTRAINT soli_id PRIMARY KEY (soli_id),
+    CONSTRAINT PK_soli PRIMARY KEY (soli_id),
 
     CONSTRAINT fk_solicitud_cliente
         FOREIGN KEY (soli_cliente_id)
@@ -403,7 +499,7 @@ CREATE TABLE LA_MILA_COMPLETA.detalle_solicitud (
     deta_cantidad_dias INT,
     deta_observaciones NVARCHAR(MAX),
 
-    CONSTRAINT deta_id PRIMARY KEY (deta_id),
+    CONSTRAINT PK_deta PRIMARY KEY (deta_id),
 
     CONSTRAINT fk_detalle_solicitud_solicitud
         FOREIGN KEY (deta_solicitud_id)
@@ -420,7 +516,7 @@ CREATE TABLE LA_MILA_COMPLETA.aerolinea (
     arol_nombre NVARCHAR(255),
     arol_alianza NVARCHAR(255),
 
-    CONSTRAINT arol_codigo PRIMARY KEY (arol_codigo),
+    CONSTRAINT PK_arol PRIMARY KEY (arol_codigo),
     
     CONSTRAINT fk_aerolinea_pais
         FOREIGN KEY (arol_pais_id)
@@ -432,7 +528,7 @@ CREATE TABLE LA_MILA_COMPLETA.aeropuerto (
     aero_ciudad_id BIGINT,
     aero_descripcion NVARCHAR(200),
 
-    CONSTRAINT aero_codigo PRIMARY KEY (aero_codigo),
+    CONSTRAINT PK_aero PRIMARY KEY (aero_codigo),
 
     CONSTRAINT fk_aeropuerto_ciudad
         FOREIGN KEY (aero_ciudad_id)
@@ -447,7 +543,7 @@ CREATE TABLE LA_MILA_COMPLETA.encuesta (
     encu_fecha DATE,
     encu_comentario NVARCHAR(MAX),
 
-    CONSTRAINT PK_encuesta PRIMARY KEY (encu_codigo),
+    CONSTRAINT PK_encu PRIMARY KEY (encu_codigo),
 
     CONSTRAINT fk_encuesta_cliente
         FOREIGN KEY (encu_cliente_id)
@@ -465,7 +561,7 @@ CREATE TABLE LA_MILA_COMPLETA.puntaje (
     punt_encuesta_codigo BIGINT,
     punt_puntaje INT,
     
-    CONSTRAINT punt_id PRIMARY KEY (punt_id),
+    CONSTRAINT PK_punt PRIMARY KEY (punt_id),
 
     CONSTRAINT fk_puntaje_encuesta
         FOREIGN KEY (punt_encuesta_codigo)
@@ -477,7 +573,7 @@ CREATE TABLE LA_MILA_COMPLETA.aspecto (
     aspe_encuesta_codigo BIGINT,
     aspe_aspecto NVARCHAR(255),
 
-    CONSTRAINT aspe_codigo PRIMARY KEY (aspe_codigo),
+    CONSTRAINT PK_aspe PRIMARY KEY (aspe_codigo),
 
     CONSTRAINT fk_aspecto_encuesta
         FOREIGN KEY (aspe_encuesta_codigo)
@@ -488,7 +584,7 @@ CREATE TABLE LA_MILA_COMPLETA.estado_propuesta (
     espr_codigo BIGINT IDENTITY(1,1),
     espr_nombre NVARCHAR(255)
 
-    CONSTRAINT espr_codigo PRIMARY KEY (es),
+    CONSTRAINT PK_espr PRIMARY KEY (es),
 );
 
 CREATE TABLE LA_MILA_COMPLETA.propuesta (
@@ -504,7 +600,7 @@ CREATE TABLE LA_MILA_COMPLETA.propuesta (
     prop_descuento DECIMAL(18,2),
     prop_importe_total DECIMAL(18,2),
     
-    CONSTRAINT prop_id PRIMARY KEY (prop_id), 
+    CONSTRAINT PK_prop PRIMARY KEY (prop_id), 
 
     CONSTRAINT fk_propuesta_estado_propuesta
         FOREIGN KEY (prop_estado)
@@ -532,7 +628,7 @@ CREATE TABLE LA_MILA_COMPLETA.venta (
     vent_importe_total DECIMAL(18,2),
     vent_medio_pago NVARCHAR(255),
 
-    CONSTRAINT vent_nro PRIMARY KEY (vent_nro),
+    CONSTRAINT PK_vent PRIMARY KEY (vent_nro),
 
     CONSTRAINT fk_venta_agencia
         FOREIGN KEY (vent_agencia_nro)
@@ -560,7 +656,7 @@ CREATE TABLE LA_MILA_COMPLETA.hospedaje (
     hosp_direccion NVARCHAR(255),
     hosp_incluye_desayuno BIT
 
-    CONSTRAINT PK_hospedaje PRIMARY KEY (hosp_id),
+    CONSTRAINT PK_hosp PRIMARY KEY (hosp_id),
 
     CONSTRAINT fk_hospedaje_ciudad
         FOREIGN KEY (hosp_ciudad_id)
@@ -568,20 +664,21 @@ CREATE TABLE LA_MILA_COMPLETA.hospedaje (
 );
 
 CREATE TABLE LA_MILA_COMPLETA.habitacion (
-    habi_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    habi_id BIGINT IDENTITY(1,1),
     habi_hospedaje_id BIGINT,
     habi_nombre NVARCHAR(255),
     habi_descripcion NVARCHAR(MAX),
     habi_precio_noche DECIMAL(18,2),
 
     CONSTRAINT PK_habi PRIMARY KEY (habi_id),
+
     CONSTRAINT fk_Habitacion_Hospedaje
         FOREIGN KEY (habi_hospedaje_id)
         REFERENCES LA_MILA_COMPLETA.hospedaje(hosp_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.propuesta_hospedaje (
-    prho_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    prho_id BIGINT IDENTITY(1,1),
     prho_propuesta_id BIGINT,
     prho_hospedaje_id BIGINT,
     prho_habitacion_id BIGINT,
@@ -590,6 +687,8 @@ CREATE TABLE LA_MILA_COMPLETA.propuesta_hospedaje (
     prho_cantidad_habitaciones INT,
     prho_precio_hospedaje DECIMAL(18,2),
     prho_subtotal_hospedaje DECIMAL(18,2),
+
+    CONSTRAINT PK_prho PRIMARY KEY (prho_id),
 
     CONSTRAINT fk_propuesta_hospedaje_propuesta
         FOREIGN KEY (prho_propuesta_id)
@@ -611,7 +710,8 @@ CREATE TABLE LA_MILA_COMPLETA.vuelo (
     vuel_aerolinea_destino NVARCHAR(10),
     vuel_aerolinea_origen NVARCHAR(10),
     vuel_duracion INT,
-    PRIMARY KEY (vuel_aerolinea_codigo, vuel_numero, vuel_fecha),
+    
+    CONSTRAINT PK_vuel PRIMARY KEY (vuel_aerolinea_codigo, vuel_numero, vuel_fecha),
 
     CONSTRAINT fk_vuelo_aeropuerto_destino
         FOREIGN KEY (vuel_aerolinea_destino)
@@ -623,13 +723,14 @@ CREATE TABLE LA_MILA_COMPLETA.vuelo (
 );
 
 CREATE TABLE LA_MILA_COMPLETA.item_vuelo (
-    itvu_codigo_reserva BIGINT IDENTITY(1,1) PRIMARY KEY,
+    itvu_codigo_reserva BIGINT IDENTITY(1,1),
     itvu_vuelo_aerolinea_codigo NVARCHAR(255),
     itvu_vuelo_numero BIGINT,
     itvu_vuelo_fecha DATE,
     itvu_cantidad_pasajes INT,
     itvu_precio_subtotal DECIMAL(18,2),
 
+    CONSTRAINT PK_itvu PRIMARY KEY (itvu_codigo_reserva),
 
     CONSTRAINT fk_item_vuelo_vuelo
         FOREIGN KEY (itvu_vuelo_aerolinea_codigo, itvu_vuelo_numero, itvu_vuelo_fecha)
@@ -637,7 +738,7 @@ CREATE TABLE LA_MILA_COMPLETA.item_vuelo (
 );
 
 CREATE TABLE LA_MILA_COMPLETA.pasaje (
-    pasa_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    pasa_id BIGINT IDENTITY(1,1),
     pasa_item_vuelo_codigo_reserva BIGINT,
     pasa_vuelo_aerolinea_codigo NVARCHAR(255),
     pasa_vuelo_numero BIGINT,
@@ -645,6 +746,8 @@ CREATE TABLE LA_MILA_COMPLETA.pasaje (
     pasa_precio_unitario DECIMAL(18,2),
     pasa_inlcuye_carry BIT,
     pasa_incluye_valija BIT,
+
+    CONSTRAINT PK_pasa PRIMARY KEY (pasa_id),
 
     CONSTRAINT fk_pasaje_item_vuelo
         FOREIGN KEY (pasa_item_vuelo_codigo_reserva)
@@ -656,7 +759,7 @@ CREATE TABLE LA_MILA_COMPLETA.pasaje (
 );
 
 CREATE TABLE LA_MILA_COMPLETA.propuesta_vuelo (
-    prvu_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    prvu_id BIGINT IDENTITY(1,1),
     prvu_propuesta_nro BIGINT,
     prvu_vuelo_aerolinea_codigo NVARCHAR(255),
     prvu_vuelo_numero BIGINT,
@@ -665,6 +768,8 @@ CREATE TABLE LA_MILA_COMPLETA.propuesta_vuelo (
     prvu_cantidad_pasajes INT,
     prvu_precio_vuelo DECIMAL(18,2),
     prvu_subtotal_vuelo DECIMAL(18,2),
+    
+    CONSTRAINT PK_prvu PRIMARY KEY (prvu_id),
 
     CONSTRAINT fk_propuesta_propuesta_vuelo
         FOREIGN KEY (prvu_propuesta_nro)
@@ -680,14 +785,16 @@ CREATE TABLE LA_MILA_COMPLETA.propuesta_vuelo (
 );
 
 CREATE TABLE LA_MILA_COMPLETA.proveedor (
-    prov_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    prov_id BIGINT IDENTITY(1,1),
     prov_nombre NVARCHAR(255),
     prov_mail NVARCHAR(255),
     prov_telefono NVARCHAR(255)
+
+    CONSTRAINT PK_prov PRIMARY KEY (prov_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.excursion (
-    excu_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    excu_id BIGINT IDENTITY(1,1),
     excu_proveedor_id BIGINT,
     excu_nombre NVARCHAR(255),
     excu_descripcion NVARCHAR(255),
@@ -695,34 +802,42 @@ CREATE TABLE LA_MILA_COMPLETA.excursion (
     excu_duracion INT,
     excu_precio_unitario DECIMAL(18,2),
 
+    CONSTRAINT PK_excu PRIMARY KEY (excu_id),
+
     CONSTRAINT fk_excursion_proveedor
         FOREIGN KEY (excu_proveedor_id)
         REFERENCES LA_MILA_COMPLETA.proveedor(prov_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.item_excursion (
-    itex_codigo_reserva NVARCHAR(255) PRIMARY KEY,
+    itex_codigo_reserva NVARCHAR(255),
     itex_fecha_venta DATE,
     itex_cantidad INT,
     itex_precio_subtotal DECIMAL(18,2),
+    
+    CONSTRAINT PK_itex PRIMARY KEY (itex_codigo_reserva)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.item_hospedaje (
-    itho_codigo_reserva BIGINT IDENTITY(1,1) PRIMARY KEY,
+    itho_codigo_reserva BIGINT IDENTITY(1,1),
     itho_fecha_ingreso DATE,
     itho_fecha_egreso DATE,
     itho_cantidad_habitaciones INT,
     itho_precio_subtotal DECIMAL(18,2)
+
+    CONSTRAINT PK_itho PRIMARY KEY (itho_codigo_reserva)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.tramo(
-    tram_id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    tram_id BIGINT IDENTITY(1,1),
     tram_aerolinea_origen NVARCHAR(10),
     tram_aerolinea_destino NVARCHAR(10),
     tram_fecha_salida DATE,
     tram_horario_salida NVARCHAR(50),
     tram_fecha_llegada DATE,
     tram_horario_llegada NVARCHAR(50),
+
+    CONSTRAINT PK_tram PRIMARY KEY (tram_id),
 
     CONSTRAINT fk_tramo_aero_origen
         FOREIGN KEY (tram_aerolinea_origen)
@@ -749,12 +864,13 @@ CREATE TABLE LA_MILA_COMPLETA.item_excursion_excursion(
         FOREIGN KEY (itee_excursion_id)
         REFERENCES LA_MILA_COMPLETA.excursion(excu_id),
 
-    PRIMARY KEY (itee_excursion_id, itee_item_codigo_reserva)
+    CONSTRAINT PK_itee PRIMARY KEY (itee_excursion_id, itee_item_codigo_reserva)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.pasaje_tramo (
     patr_pasaje_id BIGINT,
     patr_tramo_id BIGINT,
+
 
     CONSTRAINT fk_pasaje_tramo_pasaje
         FOREIGN KEY (patr_pasaje_id)
@@ -764,7 +880,7 @@ CREATE TABLE LA_MILA_COMPLETA.pasaje_tramo (
         FOREIGN KEY (patr_tramo_id)
         REFERENCES LA_MILA_COMPLETA.tramo(tram_id),
 
-    PRIMARY KEY (patr_pasaje_id, patr_tramo_id)
+    CONSTRAINT PK_patr PRIMARY KEY (patr_pasaje_id, patr_tramo_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.vuelo_tramo (
@@ -781,7 +897,7 @@ CREATE TABLE LA_MILA_COMPLETA.vuelo_tramo (
         FOREIGN KEY (vutr_tramo_id)
         REFERENCES LA_MILA_COMPLETA.tramo(tram_id),
 
-    PRIMARY KEY (vutr_vuelo_aerolinea_codigo, vutr_vuelo_numero, vutr_vuelo_fecha, vutr_tramo_id)
+    CONSTRAINT PK_vutr PRIMARY KEY (vutr_vuelo_aerolinea_codigo, vutr_vuelo_numero, vutr_vuelo_fecha, vutr_tramo_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.propuesta_hospedaje_habitacion (
@@ -795,7 +911,7 @@ CREATE TABLE LA_MILA_COMPLETA.propuesta_hospedaje_habitacion (
         FOREIGN KEY (prhh_propuesta_hospedaje_id)
         REFERENCES LA_MILA_COMPLETA.propuesta_hospedaje(prho_id),
 
-    PRIMARY KEY (prhh_habitacion_id, prhh_propuesta_hospedaje_id)
+    CONSTRAINT PK_prhh PRIMARY KEY (prhh_habitacion_id, prhh_propuesta_hospedaje_id)
 );
 
 CREATE TABLE LA_MILA_COMPLETA.aspecto_puntaje (
@@ -810,16 +926,13 @@ CREATE TABLE LA_MILA_COMPLETA.aspecto_puntaje (
         FOREIGN KEY (asde_aspecto_codigo)
         REFERENCES LA_MILA_COMPLETA.puntaje(punt_id),
 
-    PRIMARY KEY (asde_detalle_id, asde_aspecto_codigo)
+    CONSTRAINT PK_asde PRIMARY KEY (asde_detalle_id, asde_aspecto_codigo)
 );
 
 -- ======================================== [Migración] ======================================== --
-
-
-
 --Stored Procedures de las tablas maestras.
 GO
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRA_PAIS
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PAIS
 AS
 BEGIN
     --Evita que salgan mensajes de que se creó un registro.
@@ -834,73 +947,9 @@ BEGIN
         SELECT Aerolinea_Pais FROM GD1C2026.gd_esquema.Maestra WHERE Aerolinea_Pais IS NOT NULL
         UNION
         SELECT Hospedaje_Pais FROM GD1C2026.gd_esquema.Maestra WHERE Hospedaje_Pais IS NOT NULL;
-END
+END;
 
 GO
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PROVINCIA
-AS
-BEGIN
-
-    SET NOCOUNT ON;
-
-    INSERT INTO LA_MILA_COMPLETA.provincia (pcia_nombre)
-
-        SELECT Agencia_Provincia FROM GD1C2026.gd_esquema.Maestra WHERE Agencia_Provincia IS NOT NULL
-        UNION
-        SELECT Agente_Provincia FROM GD1C2026.gd_esquema.Maestra WHERE Agente_Provincia IS NOT NULL
-        UNION
-        SELECT Cliente_Provincia FROM GD1C2026.gd_esquema.Maestra WHERE Cliente_Provincia IS NOT NULL;
-END
-
-GO
-CREATE PROCEDURE LA_MILA_COMPLETA.proveedor
-AS
-BEGIN
-
-    SET NOCOUNT ON;
-
-    INSERT INTO LA_MILA_COMPLETA.proveedor (prov_nombre)
-        SELECT DISTINCT Proveedor_Nombre FROM GD1C2026.gd_esquema.Maestra WHERE Proveedor_Nombre IS NOT NULL;
-
-END
-GO
-
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ESTADO_PROPUESTA
-AS
-BEGIN
-
-    SET NOCOUNT ON;
-    INSERT INTO LA_MILA_COMPLETA.estado_propuesta (espr_nombre)
-        SELECT DISTINCT Propuesta_Estado FROM GD1C2026.gd_esquema.Maestra WHERE Propuesta_Estado IS NOT NULL;
-END
-
-
-GO
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ITEM_EXCURSION
-AS
-BEGIN
-
-    SET NOCOUNT ON;
-
-    INSERT INTO LA_MILA_COMPLETA.item_excursion (itex_codigo_reserva,itex_fecha_venta, itex_cantidad, itex_precio_subtotal)
-    SELECT DISTINCT Detalle_Venta_Excursion_Cod_Reserva, Detalle_Venta_Excursion_Fecha_Reserva, Detalle_Venta_Excursion_Cant, Detalle_Venta_Excursion_Subtotal FROM GD1C2026.gd_esquema.Maestra WHERE Detalle_Venta_Excursion_Cod_Reserva IS NOT NULL;
-
-END
-
-GO
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ITEM_HOSPEDAJE
-AS
-BEGIN
-
-    SET NOCOUNT ON;
-
-    INSERT INTO LA_MILA_COMPLETA.item_hospedaje (itho_codigo_reserva, itho_fecha_ingreso, itho_fecha_egreso, itho_cantidad_habitaciones, itho_precio_subtotal)
-    SELECT DISTINCT Detalle_Venta_Hospedaje_Cod_Reserva, Detalle_Venta_Hospedaje_Fecha_Desde, Detalle_Venta_Hospedaje_Fecha_Hasta, Detalle_Venta_Hospedaje_Cantidad, Detalle_Venta_Hospedaje_Subtotal
-    FROM GD1C2026.gd_esquema.Maestra WHERE Detalle_Venta_Hospedaje_Cod_Reserva IS NOT NULL;
-END
-GO
-
--- Stored Procedures de las otras tablas (menos transaccionales)
 CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_CIUDAD
 AS
 BEGIN
@@ -916,20 +965,36 @@ BEGIN
 
         UNION
 
-        SELECT DISTINCT m.Aeropuerto_Llegada_Ciudad, p.pais_id
+        SELECT m.Aeropuerto_Llegada_Ciudad, p.pais_id
         FROM GD1C2026.gd_esquema.Maestra m
         JOIN LA_MILA_COMPLETA.pais p ON m.Aeropuerto_Llegada_Pais = p.pais_nombre
         WHERE m.Aeropuerto_Llegada_Ciudad IS NOT NULL
 
         UNION
 
-        SELECT DISTINCT m.Hospedaje_Ciudad, p.pais_id
+        SELECT m.Hospedaje_Ciudad, p.pais_id
         FROM GD1C2026.gd_esquema.Maestra m
         JOIN LA_MILA_COMPLETA.pais p ON m.Hospedaje_Pais = p.pais_nombre
         WHERE m.Hospedaje_Ciudad IS NOT NULL;
-END
-GO
+END;
 
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PROVINCIA
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.provincia (pcia_nombre)
+
+        SELECT Agencia_Provincia FROM GD1C2026.gd_esquema.Maestra WHERE Agencia_Provincia IS NOT NULL
+        UNION
+        SELECT Agente_Provincia FROM GD1C2026.gd_esquema.Maestra WHERE Agente_Provincia IS NOT NULL
+        UNION
+        SELECT Cliente_Provincia FROM GD1C2026.gd_esquema.Maestra WHERE Cliente_Provincia IS NOT NULL;
+END;
+
+GO
 CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_LOCALIDAD
 AS
 BEGIN
@@ -937,27 +1002,103 @@ BEGIN
 
     INSERT INTO LA_MILA_COMPLETA.localidad (loca_nombre, loca_provincia_id)
 
-    SELECT DISTINCT m.Agencia_Localidad, p.pcia_id
+    SELECT m.Agencia_Localidad, p.pcia_id
     FROM GD1C2026.gd_esquema.Maestra m
     JOIN LA_MILA_COMPLETA.provincia p ON m.Agencia_Provincia = p.pcia_nombre
     WHERE m.Agencia_Localidad IS NOT NULL
 
     UNION
 
-    SELECT DISTINCT m.Agente_Localidad, p.pcia_id
+    SELECT m.Agente_Localidad, p.pcia_id
     FROM GD1C2026.gd_esquema.Maestra m
     JOIN dbo.provincia p ON m.Agente_Provincia = p.pcia_nombre
     WHERE m.Agente_Localidad IS NOT NULL
 
     UNION
 
-    SELECT DISTINCT m.Cliente_Localidad, p.pcia_id
+    SELECT m.Cliente_Localidad, p.pcia_id
     FROM GD1C2026.gd_esquema.Maestra m
     JOIN dbo.provincia p ON m.Cliente_Provincia = p.pcia_nombre
     WHERE m.Cliente_Localidad IS NOT NULL;
-END
-GO
+END;
 
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_CLIENTE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.cliente (clie_localidad_id, clie_dni, clie_nombre, clie_apellido, clie_telefono, clie_mail, clie_direccion, clie_fecha_nacimiento)
+    SELECT DISTINCT l.loca_id, m.Cliente_Dni, m.Cliente_Nombre, m.Cliente_Apellido, m.Cliente_Tel, m.Cliente_Mail, m.Cliente_Direccion, m.Cliente_Fecha_Nac
+    FROM GD1C2026.gd_esquema.Maestra m
+    JOIN LA_MILA_COMPLETA.localidad l ON m.Cliente_Localidad = l.loca_nombre
+    WHERE m.Cliente_DNI IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_AGENCIA
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.agencia (agcy_nro, agcy_localidad_id, agcy_direccion, agcy_telefono, agcy_mail)
+    SELECT DISTINCT
+        Agencia_Nro_Agencia,
+        Agencia_Localidad,
+        Agencia_Direccion,
+        Agencia_Telefono,
+        Agencia_Mail
+    FROM GD1C2026.gd_esquema.Maestra
+    WHERE Agencia_Nro_Agencia IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_AGENTE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.agente (agen_legajo, agen_agencia_numero, agen_localidad_id, agen_dni, agen_nombre, agen_apellido, agen_telefono, agen_mail, agen_direccion, agen_fecha_nacimiento)
+    SELECT DISTINCT m.Agente_Legajo, a.agcy_nro, l.loca_id, m.Agente_Dni, m.Agente_Nombre, m.Agente_Apellido, m.Agente_Tel, m.Agente_Mail, m.Agente_Direccion, m.Agente_Fecha_Nac
+    FROM GD1C2026.gd_esquema.Maestra m
+    JOIN LA_MILA_COMPLETA.localidad l ON m.Agente_Localidad = l.loca_nombre
+    JOIN LA_MILA_COMPLETA.agencia a ON m.Agencia_Nro_Agencia = a.agcy_nro
+    WHERE m.Agente_DNI IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_SOLICITUD
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.solicitud (soli_id, soli_cliente_id, soli_agente_legajo, soli_fecha_realizacion, soli_fecha_inicio_tentativa, soli_fecha_fin_tentativa, soli_cantidad_pasajeros, soli_observaciones, soli_presupuesto_estimado)
+    SELECT DISTINCT m.Solicitud_Codigo, c.clie_id , a.agen_Legajo, m.Solicitud_Fecha_Realizacion, m.Solicitud_Fecha_Inicio_Tentativa, m.Solicitud_Fecha_Fin_Tentativa, m.Solicitud_Cantidad_Pasajeros, m.Solicitud_Observaciones, m.Solicitud_Presupuesto_Estimado
+    FROM GD1C2026.gd_esquema.Maestra m
+    JOIN LA_MILA_COMPLETA.cliente c ON m.Cliente_Dni = c.clie_dni
+    JOIN LA_MILA_COMPLETA.agente a ON m.Agente_Dni = a.agen_dni
+    WHERE m.Solicitud_Codigo IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_DETALLE_SOLICITUD
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.detalle_solicitud(deta_solicitud_id, deta_ciudad_id, deta_cantidad_dias, deta_observaciones)
+    SELECT DISTINCT s.soli_id, c.ciud_id, m.Detalle_Solicitud_Cant_Dias_Aprox, m.Detalle_Solicitud_Observaciones
+
+    FROM GD1C2026.gd_esquema.Maestra m
+
+    JOIN LA_MILA_COMPLETA.solicitud s ON s.soli_id = m.Solicitud_Codigo
+
+    JOIN LA_MILA_COMPLETA.ciudad c ON c.ciud_nombre = m.Detalle_Solicitud_Ciudad
+
+    WHERE m.Solicitud_Codigo IS NOT NULL AND m.Detalle_Solicitud_Ciudad IS NOT NULL;
+END;
+
+GO
 CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_AEROLINEA
 AS
 BEGIN
@@ -968,10 +1109,151 @@ BEGIN
     FROM GD1C2026.gd_esquema.Maestra m
     JOIN LA_MILA_COMPLETA.pais p ON m.Aerolinea_Pais = p.pais_nombre
     WHERE m.Aerolinea_Codigo IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_AEROPUERTO
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.aeropuerto (aero_codigo, aero_ciudad_id, aero_descripcion)
+        SELECT DISTINCT m.Aeropuerto_Salida_Codigo, c.ciud_id, m.Aeropuerto_Descripcion
+        FROM GD1C2026.gd_esquema.Maestra m
+        JOIN LA_MILA_COMPLETA.ciudad c ON m.Aeropuerto_Salida_Ciudad = c.ciud_nombre
+        WHERE m.Aeropuerto_Codigo IS NOT NULL
+
+        UNION
+
+        SELECT DISTINCT m.Aeropuerto_Llegada_Codigo, c.ciud_id, m.Aeropuerto_Descripcion
+        FROM GD1C2026.gd_esquema.Maestra m
+        JOIN LA_MILA_COMPLETA.ciudad c ON m.Aeropuerto_Llegada_Ciudad = c.ciud_nombre
+        WHERE m.Aeropuerto_Codigo IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ENCUESTA
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.encuesta (encu_cliente_id, encu_agente_legajo, encu_agencia_nro, encu_fecha, encu_comentario)
+        SELECT DISTINCT  c.clie_id, a.agen_legajo, ag.agcy_nro, m.encuesta_fecha, m.encuesta_comentario
+        FROM GD1C2026.gd_esquema.Maestra m
+        JOIN LA_MILA_COMPLETA.cliente c ON m.Cliente_Dni = c.clie_dni
+
+        JOIN LA_MILA_COMPLETA.agente a ON m.Agente_Dni = a.agen_dni
+
+        JOIN LA_MILA_COMPLETA.agencia ag ON m.Agencia_Direccion = ag.agcy_direccion
+
+        WHERE m.encuesta_fecha IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PUNTAJE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ASPECTO
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ESTADO_PROPUESTA
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+    INSERT INTO LA_MILA_COMPLETA.estado_propuesta (espr_nombre)
+        SELECT DISTINCT Propuesta_Estado FROM GD1C2026.gd_esquema.Maestra WHERE Propuesta_Estado IS NOT NULL;
 END
 GO
 
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_EXCURSIONES
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_HOSPEDAJE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.hospedaje (hosp_check_in, hosp_check_out, hosp_ciudad_id, hosp_nombre, hosp_direccion, hosp_incluye_desayuno)
+    SELECT DISTINCT m.Hospedaje_Check_In, m.Hospedaje_Check_Out, c.ciud_id, m.Hospedaje_Nombre, m.Hospedaje_Direccion, m.Hospedaje_Incluye_Desayuno
+    FROM GD1C2026.gd_esquema.Maestra m
+    JOIN LA_MILA_COMPLETA.ciudad c ON m.Hospedaje_Ciudad = c.ciud_nombre
+    WHERE m.Hospedaje_Nombre IS NOT NULL;
+END;
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_HABITACION
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.habitacion (habi_hospedaje_id, habi_nombre, habi_descripcion, habi_precio_noche)
+    SELECT DISTINCT h.hosp_id, m.Habitacion_Nombre, m.Habitacion_Descripcion, m.Habitacion_Precio_Noche
+    FROM GD1C2026.gd_esquema.Maestra m
+    JOIN LA_MILA_COMPLETA.hospedaje h ON m.Hospedaje_Nombre = h.hosp_nombre
+    WHERE m.Habitacion_Nombre IS NOT NULL;
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PROPUESTA_HOSPEDAJE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+END;
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_VUELO
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ITEM_VUELO
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PASAJE
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PROPUESTA_VUELOS
+AS
+BEGIN
+    SET NOCOUNT ON;
+END
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PROVEEDOR
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.proveedor (prov_nombre)
+        SELECT DISTINCT Proveedor_Nombre FROM GD1C2026.gd_esquema.Maestra WHERE Proveedor_Nombre IS NOT NULL;
+
+END
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_EXCURSION
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -982,24 +1264,105 @@ BEGIN
     FROM GD1C2026.gd_esquema.Maestra m
     JOIN LA_MILA_COMPLETA.proveedor pr ON m.Proveedor_Nombre = pr.prov_nombre
     WHERE m.Excursion_Codigo IS NOT NULL;
-END;
+END
 GO
 
-CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_HABITACIONES
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ITEM_EXCURSION
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.item_excursion (itex_codigo_reserva,itex_fecha_venta, itex_cantidad, itex_precio_subtotal)
+    SELECT DISTINCT Detalle_Venta_Excursion_Cod_Reserva, Detalle_Venta_Excursion_Fecha_Reserva, Detalle_Venta_Excursion_Cant, Detalle_Venta_Excursion_Subtotal FROM GD1C2026.gd_esquema.Maestra WHERE Detalle_Venta_Excursion_Cod_Reserva IS NOT NULL;
+END
+
+GO
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ITEM_HOSPEDAJE
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+
+    INSERT INTO LA_MILA_COMPLETA.item_hospedaje (itho_codigo_reserva, itho_fecha_ingreso, itho_fecha_egreso, itho_cantidad_habitaciones, itho_precio_subtotal)
+    SELECT DISTINCT Detalle_Venta_Hospedaje_Cod_Reserva, Detalle_Venta_Hospedaje_Fecha_Desde, Detalle_Venta_Hospedaje_Fecha_Hasta, Detalle_Venta_Hospedaje_Cantidad, Detalle_Venta_Hospedaje_Subtotal
+    FROM GD1C2026.gd_esquema.Maestra WHERE Detalle_Venta_Hospedaje_Cod_Reserva IS NOT NULL;
+END
+GO
+
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_TRAMO
 AS
 BEGIN
     SET NOCOUNT ON;
+END;
+GO
 
-    INSERT INTO LA_MILA_COMPLETA.habitacion (habi_hospedaje_id, habi_nombre, habi_descripcion, habi_precio_noche)
-    SELECT DISTINCT h.hosp_id, m.Habitacion_Nombre, m.Habitacion_Descripcion, m.Habitacion_Precio
-    FROM GD1C2026.gd_esquema.Maestra m
-    JOIN LA_MILA_COMPLETA.hospedaje h ON m.Hospedaje_Nombre = h.hosp_nombre AND m.Hospedaje_Ciudad = (SELECT ciud_nombre FROM LA_MILA_COMPLETA.ciudad WHERE ciud_id = h.hosp_ciudad_id)
-    WHERE m.Habitacion_Nombre IS NOT NULL;
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ITEM_EXCURSION_EXCURSION
+AS
+BEGIN
+    SET NOCOUNT ON;
 END;
 GO
 
 
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PASAJE_TRAMO
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+GO
 
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_VUELO_TRAMO
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+GO
 
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_PROPUESTA_HOSPEDAJE_HABITACION
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+GO
 
+CREATE PROCEDURE LA_MILA_COMPLETA.MIGRAR_ASPECTO_PUNTAJE
+AS
+BEGIN
+    SET NOCOUNT ON;
+END;
+GO
 
+--Ejecución Stored Procedures
+EXEC LA_MILA_COMPLETA.MIGRAR_PAIS;
+EXEC LA_MILA_COMPLETA.MIGRAR_CIUDAD;
+EXEC LA_MILA_COMPLETA.MIGRAR_PROVINCIA;
+EXEC LA_MILA_COMPLETA.MIGRAR_LOCALIDAD;
+EXEC LA_MILA_COMPLETA.MIGRAR_CLIENTE;
+EXEC LA_MILA_COMPLETA.MIGRAR_AGENCIA;
+EXEC LA_MILA_COMPLETA.MIGRAR_AGENTE;
+EXEC LA_MILA_COMPLETA.MIGRAR_SOLICITUD;
+EXEC LA_MILA_COMPLETA.MIGRAR_DETALLE_SOLICITUD;
+EXEC LA_MILA_COMPLETA.MIGRAR_AEROLINEA;
+EXEC LA_MILA_COMPLETA.MIGRAR_AEROPUERTO;
+EXEC LA_MILA_COMPLETA.MIGRAR_ENCUESTA;
+EXEC LA_MILA_COMPLETA.MIGRAR_PUNTAJE;
+EXEC LA_MILA_COMPLETA.MIGRAR_ASPECTO;
+EXEC LA_MILA_COMPLETA.MIGRAR_ESTADO_PROPUESTA;
+EXEC LA_MILA_COMPLETA.MIGRAR_HOSPEDAJE;
+EXEC LA_MILA_COMPLETA.MIGRAR_HABITACION;
+EXEC LA_MILA_COMPLETA.MIGRAR_PROPUESTA_HOSPEDAJE;
+EXEC LA_MILA_COMPLETA.MIGRAR_VUELO;
+EXEC LA_MILA_COMPLETA.MIGRAR_ITEM_VUELO;
+EXEC LA_MILA_COMPLETA.MIGRAR_PASAJE;
+EXEC LA_MILA_COMPLETA.MIGRAR_PROPUESTA_VUELOS;
+EXEC LA_MILA_COMPLETA.MIGRAR_PROVEEDOR;
+EXEC LA_MILA_COMPLETA.MIGRAR_EXCURSION;
+EXEC LA_MILA_COMPLETA.MIGRAR_ITEM_EXCURSION;
+EXEC LA_MILA_COMPLETA.MIGRAR_ITEM_HOSPEDAJE;
+EXEC LA_MILA_COMPLETA.MIGRAR_TRAMO;
+EXEC LA_MILA_COMPLETA.MIGRAR_ITEM_EXCURSION_EXCURSION;
+EXEC LA_MILA_COMPLETA.MIGRAR_PASAJE_TRAMO;
+EXEC LA_MILA_COMPLETA.MIGRAR_VUELO_TRAMO;
+EXEC LA_MILA_COMPLETA.MIGRAR_PROPUESTA_HOSPEDAJE_HABITACION;
+EXEC LA_MILA_COMPLETA.MIGRAR_ASPECTO_PUNTAJE;
